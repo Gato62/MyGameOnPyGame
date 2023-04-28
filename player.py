@@ -50,15 +50,25 @@ idle_player = [
     pygame.image.load('sprites/idle_player/idle_1.png')
 ]
 
-# Start position----------------------------------------------|
-player_x = 200
-player_y = 150
-is_Jump = False
-jump_count = 10
-
 
 class Player:
+    is_Jump = False
+    jump_count = 10
+
+# Start position----------------------------------------------|
+    player_x = 200
+    player_y = 150
+
     def jump(self):
-        pass
+        if self.jump_count >= -10:
+            if self.jump_count > 0:
+                self.player_y += self.jump_count ** 2 / 2
+            else:
+                self.player_y -= self.jump_count ** 2 / 2
+            self.jump_count -= 1
+
+        else:
+            self.is_Jump = False
+            self.jump_count = 10
 
     pass
