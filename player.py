@@ -51,16 +51,19 @@ idle_player = [
 ]
 
 
-class Player:
-    is_Jump = False
-    jump_count = 10
+class Player():
+    def __init__(self):
+        self.speed_player = 15
+        self.is_jump = False
+        self.velocity = 10
+        self.jump_count = self.velocity
 
-# Start position----------------------------------------------|
-    player_x = 200
-    player_y = 150
+    # Start position----------------------------------------------|
+        self.player_x = 200
+        self.player_y = 150
 
     def jump(self):
-        if self.jump_count >= -10:
+        if self.jump_count >= -self.velocity:
             if self.jump_count > 0:
                 self.player_y += self.jump_count ** 2 / 2
             else:
@@ -68,7 +71,5 @@ class Player:
             self.jump_count -= 1
 
         else:
-            self.is_Jump = False
-            self.jump_count = 10
-
-    pass
+            self.is_jump = False
+            self.jump_count = self.velocity
